@@ -3,6 +3,6 @@ login_host: db.bhavya.store
 mysql_root_password: ExpenseApp@1
 DB_HOST: db.bhavya.store
 app_location: /app
-component: backend
+component: Backend
 
 

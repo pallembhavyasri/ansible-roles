@@ -17,28 +17,28 @@
   ansible.builtin.user:
     name: expense
 
-#we are using the common role
-- name: run the pre-requesites
-  ansible.builtin.import_role:
-    name: common #role name where tasks are located
-    tasks_from: pre-req 
+# #we are using the common role
+# - name: run the pre-requesites
+#   ansible.builtin.import_role:
+#     name: common #role name where tasks are located
+#     tasks_from: pre-req 
 
 
-# - name: Create the app directory
-#   ansible.builtin.file:
-#     path: /app # we need to send the path where we need to create the directory.
-#     state: directory # if we pass directory then only it will create a directory , touch , file are other options, if we give absent it will del
+- name: Create the app directory
+  ansible.builtin.file:
+    path: /app # we need to send the path where we need to create the directory.
+    state: directory # if we pass directory then only it will create a directory , touch , file are other options, if we give absent it will del
 
-# - name: Download the backend code
-#   ansible.builtin.get_url:
-#     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip #url to code dowload
-#     dest: /tmp/backend.zip #where to store the code
+- name: Download the backend code
+  ansible.builtin.get_url:
+    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip #url to code dowload
+    dest: /tmp/backend.zip #where to store the code
 
-# - name: Unzip the code
-#   ansible.builtin.unarchive:
-#     src: /tmp/backend.zip # by te above command already te code is in the ansible removte src
-#     dest: /app
-#     remote_src: yes # ansible first checks in remotes server if there is present it will move to dest
+- name: Unzip the code
+  ansible.builtin.unarchive:
+    src: /tmp/backend.zip # by te above command already te code is in the ansible removte src
+    dest: /app
+    remote_src: yes # ansible first checks in remotes server if there is present it will move to dest
 
 - name: Install npm dependencies
   ansible.builtin.command: npm install
